@@ -32,7 +32,7 @@ public class RabbitMQTest {
         User user = new User();
         user.setUsername("niuzj");
         user.setPassword("root");
-        rabbitTemplate.convertAndSend("exchange01", "", user);
+        rabbitTemplate.convertAndSend("exchange02", "yasuo", user);
     }
 
     @Test
