@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:application.xml")
 public class RabbitMQTest {
@@ -30,5 +33,14 @@ public class RabbitMQTest {
         user.setUsername("niuzj");
         user.setPassword("root");
         rabbitTemplate.convertAndSend("exchange01", "", user);
+    }
+
+    @Test
+    public void test03(){
+        Map<String, String> map = new HashMap<>();
+        map.put("username", "niuzj");
+        map.put("password", "root");
+        rabbitTemplate.convertAndSend("exchange02", "yasuo", map);
+
     }
 }

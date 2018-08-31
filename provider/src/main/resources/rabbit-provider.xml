@@ -25,13 +25,22 @@
     <rabbit:admin connection-factory="connectionFactory"/>
 
     <!--定义消息队列-->
-    <rabbit:queue name="queue01" durable="true" auto-delete="false"/>
-    <!--绑定队列-->
-    <rabbit:fanout-exchange id="ex_fanout" name="exchange01" durable="true">
+    <rabbit:queue name="queue01"/>
+    <rabbit:queue name="queue02"/>
+
+    <!--fanout路由-->
+    <rabbit:fanout-exchange id="ex_fanout" name="exchange01">
         <rabbit:bindings>
             <rabbit:binding queue="queue01"/>
         </rabbit:bindings>
     </rabbit:fanout-exchange>
+
+    <!--direct路由-->
+    <rabbit:direct-exchange id="ex_direct" name="exchange02">
+        <rabbit:bindings>
+            <rabbit:binding queue="queue02" key="yasuo"/>
+        </rabbit:bindings>
+    </rabbit:direct-exchange>
 
     <bean id="jsonMessageConverter" class="org.springframework.amqp.support.converter.JsonMessageConverter"/>
 
