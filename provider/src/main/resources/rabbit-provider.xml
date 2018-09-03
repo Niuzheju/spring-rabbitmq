@@ -46,6 +46,6 @@
 
     <!--创建消息队列模板-->
     <rabbit:template id="rabbitTemplate" connection-factory="connectionFactory"
-                     exchange="ex_fanout" message-converter="jsonMessageConverter"/>
+                     exchange="exchange01" message-converter="jsonMessageConverter"/>
 
 </beans>
